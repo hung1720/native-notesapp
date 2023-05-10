@@ -3,17 +3,18 @@ import React from "react";
 import { Dimensions } from "react-native";
 import { Pressable } from "react-native";
 import Icon from 'react-native-vector-icons/Ionicons'
+import { ScreenType } from "../constants/constants";
 
-const HomeScreen = () => {
+const HomeScreen = ({ onExit}) => {
   return (
     <View style={styles.container}>
-      <Pressable>
+      <Pressable onPress={() => onExit(ScreenType.addNote)}>
         <View style={styles.itemButton}>
           <Text style={styles.title}>ADD NEW NOTE</Text>
           <Icon style={styles.icon} name="arrow-forward-outline"/>
         </View>
       </Pressable>
-      <Pressable>
+      <Pressable onPress={() => onExit(ScreenType.allNotes)}>
         <View style={styles.itemButton}>
           <Text style={styles.title}>VIEW ALL NOTES</Text>
           <Icon style={styles.icon}  name="arrow-forward-outline"/>
@@ -39,6 +40,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#f5f5f5",
     justifyContent: "center",
     alignItems: "center",
+    elevation: 10,
+    shadowOffset: {width: 2, height: 10},
+    shadowColor: "black",
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
   },
   title: {
     fontSize: 30,
